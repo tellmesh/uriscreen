@@ -1,0 +1,25 @@
+id: uriscreen
+version: 1
+scheme: screen
+description: Screen capture — frame query, single capture, capture loop.
+uri_patterns:
+  - pattern: screen://{target}/monitor/{monitor}/query/frame
+    kind: query
+    operation: screen.frame
+    side_effects: false
+    approval: not_required
+  - pattern: screen://{target}/monitor/{monitor}/command/capture
+    kind: command
+    operation: screen.capture
+    side_effects: true
+    approval: required
+  - pattern: screen://{target}/capture/command/loop
+    kind: command
+    operation: screen.capture_loop
+    side_effects: true
+    approval: required
+handlers:
+  python:
+    screen.frame: python://uriscreen.handlers:frame
+    screen.capture: python://uriscreen.handlers:capture
+    screen.capture_loop: python://uriscreen.handlers:capture_loop
