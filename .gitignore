@@ -5,3 +5,6 @@ __pycache__/
 .pytest_cache/
 dist/
 build/
+
+# Markpact unpack output (urisys markpact run/materialize)
+.markpact/
