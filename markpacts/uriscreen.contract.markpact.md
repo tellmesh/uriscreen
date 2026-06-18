@@ -1,4 +1,4 @@
-# uriscreen contract v0.1
+# uriscreen contract v1.0
 
 Scheme: `screen://`
 
@@ -7,18 +7,18 @@ apiVersion: urisys.io/v1
 kind: UriContract
 metadata:
   id: uriscreen.contract
-  version: 0.1.0
+  version: 1.0.0
 scheme: screen
 queries:
   - id: screen.frame
-    pattern: screen://{node}/monitor/{monitor}/query/frame
+    pattern: screen://{target}/monitor/{monitor}/query/frame
 commands:
   - id: screen.capture
-    pattern: screen://{node}/monitor/{monitor}/command/capture
+    pattern: screen://{target}/monitor/{monitor}/command/capture
     side_effects: true
     requires_approval: true
   - id: screen.capture_loop
-    pattern: screen://{node}/capture/command/loop
+    pattern: screen://{target}/capture/command/loop
     side_effects: true
     requires_approval: true
 ```
@@ -26,9 +26,9 @@ commands:
 Routes:
 
 ```txt
-screen://{node}/monitor/{monitor}/query/frame
-screen://{node}/monitor/{monitor}/command/capture
-screen://{node}/capture/command/loop
+screen://{target}/monitor/{monitor}/query/frame
+screen://{target}/monitor/{monitor}/command/capture
+screen://{target}/capture/command/loop
 ```
 
 Backends: `mss`, `mock` (MVP).
